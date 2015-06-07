@@ -1,0 +1,1 @@
+Supporting repository for talk about functional programming in Kotlin on LambdaNsk meetup
