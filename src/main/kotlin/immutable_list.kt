@@ -4,12 +4,9 @@ interface List<out T>
 
 object nil : List<Nothing>
 
-class Cons<out T>(
-        val head: T,
-        val tail: List<T>
-) : List<T>
+class Cons<out T>(val head: T, val tail: List<T>) : List<T>
 
-fun <T> T.cons(tail: List<T>) = Cons(this, tail)
+infix fun <T> T.cons(tail: List<T>) = Cons(this, tail)
 
 fun size(lst: List<*>): Int = when (lst) {
     is Cons -> 1 + size(lst.tail)
@@ -18,7 +15,7 @@ fun size(lst: List<*>): Int = when (lst) {
 
 
 fun List<*>.trSize(): Int {
-    @tailRecursive fun impl(lst: List<*>, size: Int): Int = when (lst) {
+    tailrec fun impl(lst: List<*>, size: Int): Int = when (lst) {
         is Cons -> impl(lst.tail, size + 1)
         else -> size
     }
@@ -26,7 +23,7 @@ fun List<*>.trSize(): Int {
     return impl(this, 0)
 }
 
-tailRecursive fun <T> List<T>.forEach(body: (T) -> Unit) {
+tailrec fun <T> List<T>.forEach(body: (T) -> Unit) {
     when (this) {
         is Cons -> {
             body(this.head)

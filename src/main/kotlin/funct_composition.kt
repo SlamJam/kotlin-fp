@@ -1,6 +1,4 @@
-package funct_compositon
-
-fun <IN1, OUT1, OUT2> ((IN1) -> OUT1).andThen(f: (OUT1) -> OUT2) = { arg: IN1 -> f(this(arg)) }
+infix fun <IN1, OUT1, OUT2> ((IN1) -> OUT1).andThen(f: (OUT1) -> OUT2) = { arg: IN1 -> f(this(arg)) }
 
 fun main(args: Array<String>) {
     val add2 = { x: Int -> x + 2 }

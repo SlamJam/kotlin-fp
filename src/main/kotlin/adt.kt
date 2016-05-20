@@ -1,12 +1,12 @@
 package adt
 
-open class Name
+interface Name
 
-data class FirstName(val name: String) : Name()
+data class FirstName(val name: String) : Name
 
-data class FullName(val firstName: String, val middleName: String, val lastName: String) : Name()
+data class FullName(val firstName: String, val middleName: String, val lastName: String) : Name
 
-data class VkWomanName(val firstName: String, val nickName: String, val lastName: String, val maidenName: String) : Name()
+data class VkWomanName(val firstName: String, val nickName: String, val lastName: String, val maidenName: String) : Name
 
 fun printName(name: Name) {
     when (name) {

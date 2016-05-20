@@ -14,7 +14,7 @@ fun createPet() = ifLucky { Pet(createName()) }
 
 fun createPerson() = ifLucky { Person(createPet()) }
 
-public inline fun <T : Any> T?.filter(f: (T) -> Boolean): T? = if (this != null && f(this)) this else null
+inline fun <T : Any> T?.filter(f: (T) -> Boolean): T? = if (this != null && f(this)) this else null
 
 fun main(args: Array<String>) {
 
@@ -31,7 +31,7 @@ fun main(args: Array<String>) {
     person.filter { it.pet != null }?.
             let { println("#2: $it") }
 
-    val personsPetsNameLength = person?.let { it.pet }?.let { it.name?.length() }
+    val personsPetsNameLength = person?.let { it.pet }?.let { it.name?.length }
     val nameLengthStr = "Name length = ${personsPetsNameLength ?: "undefined"}"
     println("#3: $nameLengthStr")
 
